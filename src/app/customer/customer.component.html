@@ -1,0 +1,68 @@
+<!-- Default box -->
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">Customer</h3>
+
+    <div class="card-tools">
+      <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+        <i class="fas fa-minus"></i>
+      </button>
+      <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-5">
+        <h5>Create Customer</h5>
+        <hr>
+        <div class="well">
+          <form class="form-horizontal">
+            <div class="form-group">
+              <label> Name </label>
+              <input [formControl] = "name" type="text" class="form-control" placeholder="Name">
+            </div>
+            <div class="form-group">
+              <label> Address </label>
+              <input [formControl] = "address" type="text" class="form-control" placeholder="Address">
+            </div>
+            <div class="form-group">
+              <label> Mobile </label>
+              <input [formControl] = "mobile" type="text" class="form-control" placeholder="Mobile">
+            </div>
+            <div class="form-group">
+              <button type="reset" class="btn btn-danger"> CLEAR </button>&nbsp;&nbsp;
+              <button (click) = "save()" type="button" class="btn btn-success pull-right"> SAVE </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="col-md-7">
+        <h5>List of Customers</h5>
+        <hr>
+        <table class="table">
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Mobile</th>
+            <th>Options</th>
+          </tr>
+          <tr *ngFor="let customer of customers">
+            <td>{{customer.id}}</td>
+            <td>{{customer.name}}</td>
+            <td>{{customer.mobile}}</td>
+            <td>
+              <button class="btn btn-sm btn-warning"> EDIT </button> &nbsp;
+              <button class="btn btn-sm btn-danger"> DELETE </button>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+
+  </div>
+  <!-- /.card-body -->
+</div>
+<!-- /.card -->

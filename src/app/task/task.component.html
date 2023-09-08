@@ -1,0 +1,54 @@
+<!-- Default box -->
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">Tasks</h3>
+
+    <div class="card-tools">
+      <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+        <i class="fas fa-minus"></i>
+      </button>
+      <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+  </div>
+
+  <div class="card-body">
+    <h5>Create Task</h5>
+    <hr>
+
+    <div class="well">
+      <form class="form-horizontal">
+        <div class="form-group">
+          <label> Name </label>
+          <input [formControl] = "name" type="text" class="form-control" placeholder="Name">
+        </div>
+        <div class="form-group">
+          <label> Description </label>
+          <input [formControl] = "description" type="text" class="form-control" placeholder="Description">
+        </div>
+        <div class="form-group">
+          <label> Customer </label>
+          <select [formControl] = "customer" class="form-control">
+            <option *ngFor = "let customer of customers" value="{{customer.id}}">{{customer.name}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <button type="reset" class="btn btn-danger"> CLEAR </button>&nbsp;&nbsp;
+          <button (click) = "save()" type="button" class="btn btn-success pull-right"> SAVE </button>
+        </div>
+      </form>
+    </div>
+
+    <h5>List of Tasks</h5>
+    <hr>
+    <div *ngFor="let task of tasks" class="{{(task.complete)? 'alert-success':'alert-info'}}">
+      <h3>{{task.name}}</h3>
+      <p>{{task.description}}</p>
+      <p>{{task.customer.name}}</p>
+      <button (click) = "complete(task)" class="btn btn-success"> COMPLETE </button>
+    </div>
+  </div>
+  <!-- /.card-body -->
+</div>
+<!-- /.card -->
